@@ -1,0 +1,64 @@
+﻿@page
+@model Kvickly_Connect.Pages.Login.AllCustomersModel
+@{
+}
+<h1>All Customers</h1>
+
+<form>
+    <p>
+        Search: <input type="text" asp-for="FilterCriteria"/>
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Zip code</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Customers.Count != 0)
+        {
+
+            @foreach (var customer in Model.Customers)
+            {
+                <tr>
+                    <td>
+                        @customer.Value.CustomerId
+                    </td>
+                    <td>
+                        @customer.Value.FirstName
+                    </td>
+                    <td>
+                        @customer.Value.LastName
+                    </td>
+                    <td>
+                        @customer.Value.Address
+                    </td>
+                    <td>
+                        @customer.Value.City
+                    </td>
+                    <td>
+                        @customer.Value.ZipCode
+                    </td>
+                    <td>
+                        @customer.Value.Email
+                    </td>
+                    <td>
+                        <p>
+                            <a asp-page="EditCustomer" asp-route-id="@customer.Key">Edit</a>
+                            <a asp-page="DeleteCustomer" asp-route-id="@customer.Key">Delete</a>
+                        </p>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

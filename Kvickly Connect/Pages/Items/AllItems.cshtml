@@ -1,0 +1,59 @@
+﻿@page
+@model Kvickly_Connect.Pages.Items.AllItemsModel
+@{
+}
+<h1> All Items </h1>
+
+<form>
+    <p>
+        Search: <input type="text" asp-for="FilterCriteria" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<p>
+    We have only one of each item because of limited stock.
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Item ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model.Items.Count!=0)
+        {
+        @foreach (var item in Model.Items)
+        {
+        <tr>
+            <td>
+                @item.Value.ItemID
+            </td>
+            <td>
+                @item.Value.Name
+            </td>
+            <td>
+                @item.Value.Price .- Kr
+            </td>
+            <td>
+                @item.Value.Description
+            </td>
+            <td>
+                <img src="~/Images/@item.Value.ImagePath" width="80" height="70">
+            </td>
+            <td>
+                <a asp-page="/Orders/ShoppingCart" asp-route-id="@item.Key"
+                   class="btn btn-success btn-group-lg pull-right">
+                    Add To Cart
+                </a>
+            </td>
+        </tr>
+        }
+        }
+    </tbody>
+</table>

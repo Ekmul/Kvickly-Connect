@@ -1,0 +1,54 @@
+﻿@page
+@model Kvickly_Connect.Pages.Orders.ReceiptModel
+@{
+}
+<h3>Hello Un-isolated person: Thank you for picking this order on @DateTime.Now</h3>
+
+<p>You have to take these items to @Model.Customer.FirstName at @Model.Customer.Address , @Model.Customer.ZipCode @Model.Customer.City</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Item ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.list.Count != 0)
+        {
+            @foreach (var item in Model.list)
+            {
+                <tr>
+                    <td>
+                        @item.Value.ItemID
+                    </td>
+                    <td>
+                        @item.Value.Name
+                    </td>
+                    <td>
+                        @item.Value.Price
+                    </td>
+                    <td>
+                        @item.Value.Description
+                    </td>
+                    <td>
+                        <img src="~/Images/@item.Value.ImagePath" width="80" height="70">
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<p>
+    The total price is: @Model.Order.TotalPrice().ToString("c")
+    <br>Have a nice day!
+</p>
+
+<form method="post">
+    <div class="text-center">
+        <a asp-page="/Index" class="btn btn-primary">To Home</a>
+    </div>
+</form>

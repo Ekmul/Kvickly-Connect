@@ -1,0 +1,56 @@
+﻿@page
+@model Kvickly_Connect.Pages.Orders.OrdersToDeliverModel
+@{
+}
+<h1> All Orders </h1>
+
+<form>
+    <p>
+        Search: <input type="text" asp-for="FilterCriteria" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>OrderID</th>
+            <th>Customer</th>
+            <th>ZipCode</th>
+            <th>Order Contains</th>
+            <th>Total Price</th>
+            <th>Pick Order</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.OrderList.Count != 0)
+         {
+            @foreach (var anOrder in Model.OrderList)
+             {
+                @if (anOrder.Value.OrderHidden != true)
+                 { 
+            <tr>
+            <td>
+                @anOrder.Value.OrderID
+            </td>
+            <td>
+                @anOrder.Value.customer.FirstName @anOrder.Value.customer.LastName
+            </td>
+            <td>
+                @anOrder.Value.customer.ZipCode
+            </td>
+            <td>
+                @anOrder.Value.Items.Count Item(s)
+            </td>
+            <td>
+                @anOrder.Value.TotalPrice() .-kr
+            </td>
+            <td class="text-center">
+                <a asp-page="/Orders/Receipt" asp-route-oId="@anOrder.Key" asp-route-cu="@anOrder.Value.customer.CustomerId" class="btn btn-primary">Pick</a>
+            </td>
+        </tr>
+                }
+            }
+         }
+    </tbody>
+</table>

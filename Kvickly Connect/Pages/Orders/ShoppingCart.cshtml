@@ -1,0 +1,56 @@
+﻿@page
+@model Kvickly_Connect.Pages.Orders.ShoppingCartModel
+@{
+    ViewData["Title"] = "ShoppingCart";
+}
+<h1>ShoppingCart</h1>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ItemID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th class="text-right">Price</th>
+        </tr>
+    </thead>
+    @if (Model.OrderedItems.Count != 0)
+    {
+        <tbody>
+            @foreach (var item in Model.OrderedItems)
+            {
+                <tr>
+                    <td class="text-center">@item.Value.ItemID</td>
+                    <td class="text-left">@item.Value.Name</td>
+                    <td class="text-left">@item.Value.Description</td>
+                    <td>
+                        <img src="~/Images/@item.Value.ImagePath" width="60" height="70">
+                    </td>
+                    <td class="text-right">@item.Value.Price.ToString("c")</td>
+                    <td>
+                        <form method="post">
+                            <button asp-page-handler="Delete" asp-route-id="@item.Value.ItemID"
+                                    class="btn btn-danger btn-group-lg pull-right">
+                                Delete From Cart
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Total:</td>
+                <td class="text-right">
+                    @Model.CartService.CalculateTotalPrice().ToString("c")
+                </td>
+            </tr>
+        </tfoot>
+    }
+</table>
+<div class="text-center">
+    <a asp-page="/Items/AllItems" class="btn btn-primary">Continue shopping</a><a asp-page="/Orders/Order" asp-route-id="@Model.OrderedItems" class="btn btn-primary" width="88">Check Out</a>
+    <form method="post">
+        <input type="hidden" value="@Model.OrderedItems" name="Description" />
+    </form>
+</div>

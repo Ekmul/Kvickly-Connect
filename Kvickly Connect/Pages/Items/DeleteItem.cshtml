@@ -1,0 +1,59 @@
+﻿@page "{id}"
+@model Kvickly_Connect.Pages.Items.DeleteItemModel
+@{
+    ViewData["Title"] = "DeleteItem";
+}
+<h1>Delete Item</h1>
+
+<h3>Are you sure you want to delete this item?</h3>
+<div>
+    <form method="post">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item.ItemID)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item.ItemID)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item.Description)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item.Price)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item.Price)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item.ImagePath)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item.ImagePath)
+            </dd>
+            <dt class="col-sm-2">
+                @Model.Item.ItemID
+            </dt>
+            <dd class="col-sm-10">
+                @Model.Item.ItemID
+            </dd>
+        </dl>
+        <input type="hidden" value="@Model.Item.ItemID" name="ItemID" />
+        <input type="hidden" value="@Model.Item.ImagePath" name="ImagePath" />
+        <input type="hidden" value="@Model.Item.Price" name="Price" />
+        <input type="hidden" value="@Model.Item.Name" name="Name" />
+        <input type="hidden" value="@Model.Item.Description" name="Description" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+    <div>
+        <a asp-page="AdminItems">Back to Admin</a>
+    </div>
+</div>

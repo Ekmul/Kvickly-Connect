@@ -1,0 +1,9 @@
+{
+  "1": {
+    "Price": 8.0,
+    "Name": "Mælk",
+    "Description": "Den bedste mælk nogensinde",
+    "ImagePath": "mælk.jpg",
+    "ItemID": 1
+  }
+}

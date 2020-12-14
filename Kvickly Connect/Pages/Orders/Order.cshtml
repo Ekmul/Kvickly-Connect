@@ -1,0 +1,15 @@
+@page
+@model Kvickly_Connect.OrderModel
+@{ 
+    ViewData["Title"] = "Customer"; 
+}
+
+<h2 style="glyph-orientation-horizontal">CustomerID</h2>
+
+<form method="post">
+    <h3>Please, enter your Customer id</h3>
+    <div class="form-group">
+        <label>Id:</label><input asp-for="SpecificCustomerId" class="form-control" />
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>

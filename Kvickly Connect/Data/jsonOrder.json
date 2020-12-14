@@ -1,0 +1,26 @@
+{
+  "1": {
+    "OrderID": 1,
+    "Items": {
+      "1": {
+        "Price": 8.0,
+        "Name": "Mælk",
+        "Description": "Den bedste mælk nogensinde",
+        "ImagePath": "mælk.jpg",
+        "ItemID": 1
+      }
+    },
+    "dateTime": "2020-12-14T13:32:35.9539168+01:00",
+    "customer": {
+      "FirstName": "Emil",
+      "LastName": "Glæsner",
+      "Password": "Jeghedderjohn123",
+      "Email": "emilspunk@hotmail.com",
+      "Address": "Lysalleen 28",
+      "City": "Roskilde",
+      "ZipCode": "4000",
+      "CustomerId": 1
+    },
+    "OrderHidden": true
+  }
+}

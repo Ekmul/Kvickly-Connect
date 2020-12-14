@@ -1,0 +1,38 @@
+﻿@page
+@model Kvickly_Connect.Pages.AdminControl.AdminAllOrdersModel
+@{
+}
+<h1>All Customer Orders</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer name</th>
+            <th>Order items</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model.Orders.Count != 0)
+        {
+
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>
+                        @order.Value.OrderID
+                    </td>
+                    <td>
+                        @order.Value.customer.FirstName @order.Value.customer.LastName
+                    </td>
+                    <td>
+                        <p>
+                            <a asp-page="/Orders/DeleteOrder" asp-route-id="@order.Key">Delete</a>
+                        </p>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+
+</table>
