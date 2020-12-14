@@ -1,1 +1,12 @@
-{}
+{
+  "117350": {
+    "FirstName": "Mads",
+    "LastName": "Bruhn",
+    "Password": "12345678",
+    "Email": "mads@familien-bruhn.dk",
+    "Address": "Møllehusene 16",
+    "City": "Roskilde",
+    "ZipCode": "4000",
+    "CustomerId": 117350
+  }
+}
